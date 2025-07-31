@@ -63,7 +63,7 @@ public class D3Test {
       vars.put("linkHref", attribute);
     }
     // 4 | assert | linkHref | /reset
-    assertEquals(vars.get("linkHref").toString(), "http://localhost:8080reset");
+    assertEquals(vars.get("linkHref").toString(), "http://localhost:8080/reset");
     // 5 | close |  | 
     driver.close();
   }
@@ -111,7 +111,7 @@ public class D3Test {
       vars.put("source", attribute);
     }
     // 5 | assert | source | /images/cat2.jpg
-    assertEquals(vars.get("source").toString(), "http://localhost:8080images/cat2.jpg");
+    assertEquals(vars.get("source").toString(), "http://localhost:8080/images/cat2.jpg");
     // 6 | close |  | 
     driver.close();
   }
@@ -191,7 +191,7 @@ public class D3Test {
     // 2 | runScript | document.cookie="1=false";document.cookie="2=true";document.cookie="3=false"; | 
     js.executeScript("document.cookie=\"1=false\";document.cookie=\"2=true\";document.cookie=\"3=false\";");
     // 3 | click | linkText=Rent-A-Cat  | 
-    driver.findElement(By.linkText("Rent-A-Cat ")).click();
+    driver.findElement(By.linkText("Rent-A-Cat")).click();
     // 4 | type | id=returnID | 2
     driver.findElement(By.id("returnID")).sendKeys("2");
     // 5 | click | xpath=//button[text()="Return"] | 
@@ -214,7 +214,7 @@ public class D3Test {
     // 2 | runScript | document.cookie="1=false";document.cookie="2=false";document.cookie="3=false"; | 
     js.executeScript("document.cookie=\"1=false\";document.cookie=\"2=false\";document.cookie=\"3=false\";");
     // 3 | click | linkText=Feed-A-Cat  | 
-    driver.findElement(By.linkText("Feed-A-Cat ")).click();
+    driver.findElement(By.linkText("Feed-A-Cat")).click();
     // 4 | assertElementPresent | xpath=//button[text()="Feed"] | 
     {
       List<WebElement> elements = driver.findElements(By.xpath("//button[text()=\"Feed\"]"));
@@ -230,7 +230,7 @@ public class D3Test {
     // 2 | runScript | document.cookie="1=false";document.cookie="2=false";document.cookie="3=false"; | 
     js.executeScript("document.cookie=\"1=false\";document.cookie=\"2=false\";document.cookie=\"3=false\";");
     // 3 | click | linkText=Feed-A-Cat  | 
-    driver.findElement(By.linkText("Feed-A-Cat ")).click();
+    driver.findElement(By.linkText("Feed-A-Cat")).click();
     // 4 | click | xpath=//button[text()="Feed"] | 
     driver.findElement(By.xpath("//button[text()=\"Feed\"]")).click();
     // 5 | type | id=catnips | 6
@@ -250,7 +250,7 @@ public class D3Test {
     // 1 | open | http://localhost:8080 | 
     driver.get("http://localhost:8080");
     // 2 | click | linkText=Greet-A-Cat  | 
-    driver.findElement(By.linkText("Greet-A-Cat ")).click();
+    driver.findElement(By.linkText("Greet-A-Cat")).click();
     // 3 | assertText | id=greeting | Meow!Meow!Meow!
     assertThat(driver.findElement(By.id("greeting")).getText(), is("Meow!Meow!Meow!"));
   }
@@ -259,7 +259,7 @@ public class D3Test {
     // Test name: TEST-11-GREET-A-CAT-WITH-NAME
     // Step # | name | target | value
     // 1 | open | http://localhost:8080greet-a-cat/Jennyanydots | 
-    driver.get("http://localhost:8080greet-a-cat/Jennyanydots");
+    driver.get("http://localhost:8080/greet-a-cat/Jennyanydots");
     // 2 | assertText | id=greeting | Meow! from Jennyanydots.
     assertThat(driver.findElement(By.id("greeting")).getText(), is("Meow! from Jennyanydots."));
   }

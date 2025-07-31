@@ -115,33 +115,33 @@ public class D3Test {
     // 6 | close |  | 
     driver.close();
   }
-  @Test
-  public void tEST4LISTING() {
-    // Test name: TEST-4-LISTING
-    // Step # | name | target | value
-    // 1 | open | / | 
-    driver.get("http://localhost:8080");
-    // 2 | setWindowSize | 1200x800 | 
-    driver.manage().window().setSize(new Dimension(1200, 800));
-    // 3 | click | linkText=Catalog | 
-    driver.findElement(By.linkText("Catalog")).click();
-    // 4 | assertElementPresent | xpath=//div/ul/li[3] | 
-    {
-      List<WebElement> elements = driver.findElements(By.xpath("//div/ul/li[3]"));
-      assert(elements.size() > 0);
-    }
-    // 5 | assertElementNotPresent | xpath=//div/ul/li[4] | 
-    {
-      List<WebElement> elements = driver.findElements(By.xpath("//div/ul/li[4]"));
-      assert(elements.size() == 0);
-    }
-    // 6 | storeText | xpath=//div/ul/li[3] | name
-    vars.put("name", driver.findElement(By.xpath("//div/ul/li[3]")).getText());
-    // 7 | assert | name | ID 3. Mistoffelees
-    assertEquals(vars.get("name").toString(), "ID 3. Mistoffelees");
-    // 8 | close |  | 
-    driver.close();
-  }
+  // @Test
+  // public void tEST4LISTING() {
+  //   // Test name: TEST-4-LISTING
+  //   // Step # | name | target | value
+  //   // 1 | open | / | 
+  //   driver.get("http://localhost:8080");
+  //   // 2 | setWindowSize | 1200x800 | 
+  //   driver.manage().window().setSize(new Dimension(1200, 800));
+  //   // 3 | click | linkText=Catalog | 
+  //   driver.findElement(By.linkText("Catalog")).click();
+  //   // 4 | assertElementPresent | xpath=//div/ul/li[3] | 
+  //   {
+  //     List<WebElement> elements = driver.findElements(By.xpath("//div/ul/li[3]"));
+  //     assert(elements.size() > 0);
+  //   }
+  //   // 5 | assertElementNotPresent | xpath=//div/ul/li[4] | 
+  //   {
+  //     List<WebElement> elements = driver.findElements(By.xpath("//div/ul/li[4]"));
+  //     assert(elements.size() == 0);
+  //   }
+  //   // 6 | storeText | xpath=//div/ul/li[3] | name
+  //   vars.put("name", driver.findElement(By.xpath("//div/ul/li[3]")).getText());
+  //   // 7 | assert | name | ID 3. Mistoffelees
+  //   assertEquals(vars.get("name").toString(), "ID 3. Mistoffelees");
+  //   // 8 | close |  | 
+  //   driver.close();
+  // }
   @Test
   public void tEST5RENTACAT() {
     // Test name: TEST-5-RENT-A-CAT

@@ -48,25 +48,25 @@ public class D3Test {
     driver.quit();
   }
 
-  // @Test
-  // public void tEST1LINKS() {
-  //   // Test name: TEST-1-LINKS
-  //   // Step # | name | target | value
-  //   // 1 | open | http://localhost:8080 | 
-  //   driver.get("http://localhost:8080");
-  //   // 2 | setWindowSize | 1280x800 | 
-  //   driver.manage().window().setSize(new Dimension(1280, 800));
-  //   // 3 | storeAttribute | linkText=Reset@href | linkHref
-  //   {
-  //     WebElement element = driver.findElement(By.linkText("Reset"));
-  //     String attribute = element.getAttribute("href");
-  //     vars.put("linkHref", attribute);
-  //   }
-  //   // 4 | assert | linkHref | /reset
-  //   assertEquals(vars.get("linkHref").toString(), "http://localhost:8080/reset");
-  //   // 5 | close |  | 
-  //   driver.close();
-  // }
+  @Test
+  public void tEST1LINKS() {
+    // Test name: TEST-1-LINKS
+    // Step # | name | target | value
+    // 1 | open | http://localhost:8080 | 
+    driver.get("http://localhost:8080");
+    // 2 | setWindowSize | 1280x800 | 
+    driver.manage().window().setSize(new Dimension(1280, 800));
+    // 3 | storeAttribute | linkText=Reset@href | linkHref
+    {
+      WebElement element = driver.findElement(By.linkText("Reset"));
+      String attribute = element.getAttribute("href");
+      vars.put("linkHref", attribute);
+    }
+    // 4 | assert | linkHref | /reset
+    assertEquals(vars.get("linkHref").toString(), "http://localhost:8080/reset");
+    // 5 | close |  | 
+    driver.close();
+  }
   // @Test
   // public void tEST2RESET() {
   //   // Test name: TEST-2-RESET
@@ -94,94 +94,94 @@ public class D3Test {
   //   // 11 | close |  | 
   //   driver.close();
   // }
-  @Test
-  public void tEST3CATALOG() {
-    // Test name: TEST-3-CATALOG
-    // Step # | name | target | value
-    // 1 | open | http://localhost:8080 | 
-    driver.get("http://localhost:8080");
-    // 2 | setWindowSize | 1200x800 | 
-    driver.manage().window().setSize(new Dimension(1200, 800));
-    // 3 | click | linkText=Catalog | 
-    driver.findElement(By.linkText("Catalog")).click();
-    // 4 | storeAttribute | xpath=//li[2]/img@src | source
-    {
-      WebElement element = driver.findElement(By.xpath("//li[2]/img"));
-      String attribute = element.getAttribute("src");
-      vars.put("source", attribute);
-    }
-    // 5 | assert | source | /images/cat2.jpg
-    assertEquals(vars.get("source").toString(), "http://localhost:8080/images/cat2.jpg");
-    // 6 | close |  | 
-    driver.close();
-  }
-  @Test
-  public void tEST4LISTING() {
-    // Test name: TEST-4-LISTING
-    // Step # | name | target | value
-    // 1 | open | / | 
-    driver.get("http://localhost:8080");
-    // 2 | setWindowSize | 1200x800 | 
-    driver.manage().window().setSize(new Dimension(1200, 800));
-    // 3 | click | linkText=Catalog | 
-    driver.findElement(By.linkText("Catalog")).click();
-    // 4 | assertElementPresent | xpath=//div/ul/li[3] | 
-    {
-      List<WebElement> elements = driver.findElements(By.xpath("//div/ul/li[3]"));
-      assert(elements.size() > 0);
-    }
-    // 5 | assertElementNotPresent | xpath=//div/ul/li[4] | 
-    {
-      List<WebElement> elements = driver.findElements(By.xpath("//div/ul/li[4]"));
-      assert(elements.size() == 0);
-    }
-    // 6 | storeText | xpath=//div/ul/li[3] | name
-    vars.put("name", driver.findElement(By.xpath("//div/ul/li[3]")).getText());
-    // 7 | assert | name | ID 3. Mistoffelees
-    assertEquals(vars.get("name").toString(), "ID 3. Mistoffelees");
-    // 8 | close |  | 
-    driver.close();
-  }
-  @Test
-  public void tEST5RENTACAT() {
-    // Test name: TEST-5-RENT-A-CAT
-    // Step # | name | target | value
-    // 1 | open | / | 
-    driver.get("http://localhost:8080");
-    // 2 | setWindowSize | 1200x800 | 
-    driver.manage().window().setSize(new Dimension(1200, 800));
-    // 3 | click | linkText=Rent-A-Cat | 
-    driver.findElement(By.linkText("Rent-A-Cat")).click();
-    // 4 | assertElementPresent | xpath=//button[contains(.,'Rent')] | 
-    {
-      List<WebElement> elements = driver.findElements(By.xpath("//button[contains(.,\'Rent\')]"));
-      assert(elements.size() > 0);
-    }
-    // 5 | assertElementPresent | xpath=//button[contains(.,'Return')] | 
-    {
-      List<WebElement> elements = driver.findElements(By.xpath("//button[contains(.,\'Return\')]"));
-      assert(elements.size() > 0);
-    }
-    // 6 | close |  | 
-    driver.close();
-  }
-  @Test
-  public void tEST6RENT() {
-    // Test name: TEST-6-RENT
-    // Step # | name | target | value
-    // 1 | open | http://localhost:8080 | 
-    driver.get("http://localhost:8080");
-    // 2 | runScript | document.cookie="1=false";document.cookie="2=false";document.cookie="3=false"; | 
-    js.executeScript("document.cookie=\"1=false\";document.cookie=\"2=false\";document.cookie=\"3=false\";");
-    // 3 | click | linkText=Rent-A-Cat | 
-    driver.findElement(By.linkText("Rent-A-Cat")).click();
-    // 4 | type | id=rentID | 1
-    driver.findElement(By.id("rentID")).sendKeys("1");
-    // 5 | click | xpath=//button[text()="Rent"] | 
-    driver.findElement(By.xpath("//button[text()=\"Rent\"]")).click();
-    // 6 | assertText | css=#listing li:nth-child(1) | Rented out
-    assertThat(driver.findElement(By.cssSelector("#listing li:nth-child(1)")).getText(), is("Rented out"));
-  }
+  // @Test
+  // public void tEST3CATALOG() {
+  //   // Test name: TEST-3-CATALOG
+  //   // Step # | name | target | value
+  //   // 1 | open | http://localhost:8080 | 
+  //   driver.get("http://localhost:8080");
+  //   // 2 | setWindowSize | 1200x800 | 
+  //   driver.manage().window().setSize(new Dimension(1200, 800));
+  //   // 3 | click | linkText=Catalog | 
+  //   driver.findElement(By.linkText("Catalog")).click();
+  //   // 4 | storeAttribute | xpath=//li[2]/img@src | source
+  //   {
+  //     WebElement element = driver.findElement(By.xpath("//li[2]/img"));
+  //     String attribute = element.getAttribute("src");
+  //     vars.put("source", attribute);
+  //   }
+  //   // 5 | assert | source | /images/cat2.jpg
+  //   assertEquals(vars.get("source").toString(), "http://localhost:8080/images/cat2.jpg");
+  //   // 6 | close |  | 
+  //   driver.close();
+  // }
+  // @Test
+  // public void tEST4LISTING() {
+  //   // Test name: TEST-4-LISTING
+  //   // Step # | name | target | value
+  //   // 1 | open | / | 
+  //   driver.get("http://localhost:8080");
+  //   // 2 | setWindowSize | 1200x800 | 
+  //   driver.manage().window().setSize(new Dimension(1200, 800));
+  //   // 3 | click | linkText=Catalog | 
+  //   driver.findElement(By.linkText("Catalog")).click();
+  //   // 4 | assertElementPresent | xpath=//div/ul/li[3] | 
+  //   {
+  //     List<WebElement> elements = driver.findElements(By.xpath("//div/ul/li[3]"));
+  //     assert(elements.size() > 0);
+  //   }
+  //   // 5 | assertElementNotPresent | xpath=//div/ul/li[4] | 
+  //   {
+  //     List<WebElement> elements = driver.findElements(By.xpath("//div/ul/li[4]"));
+  //     assert(elements.size() == 0);
+  //   }
+  //   // 6 | storeText | xpath=//div/ul/li[3] | name
+  //   vars.put("name", driver.findElement(By.xpath("//div/ul/li[3]")).getText());
+  //   // 7 | assert | name | ID 3. Mistoffelees
+  //   assertEquals(vars.get("name").toString(), "ID 3. Mistoffelees");
+  //   // 8 | close |  | 
+  //   driver.close();
+  // }
+  // @Test
+  // public void tEST5RENTACAT() {
+  //   // Test name: TEST-5-RENT-A-CAT
+  //   // Step # | name | target | value
+  //   // 1 | open | / | 
+  //   driver.get("http://localhost:8080");
+  //   // 2 | setWindowSize | 1200x800 | 
+  //   driver.manage().window().setSize(new Dimension(1200, 800));
+  //   // 3 | click | linkText=Rent-A-Cat | 
+  //   driver.findElement(By.linkText("Rent-A-Cat")).click();
+  //   // 4 | assertElementPresent | xpath=//button[contains(.,'Rent')] | 
+  //   {
+  //     List<WebElement> elements = driver.findElements(By.xpath("//button[contains(.,\'Rent\')]"));
+  //     assert(elements.size() > 0);
+  //   }
+  //   // 5 | assertElementPresent | xpath=//button[contains(.,'Return')] | 
+  //   {
+  //     List<WebElement> elements = driver.findElements(By.xpath("//button[contains(.,\'Return\')]"));
+  //     assert(elements.size() > 0);
+  //   }
+  //   // 6 | close |  | 
+  //   driver.close();
+  // }
+  // @Test
+  // public void tEST6RENT() {
+  //   // Test name: TEST-6-RENT
+  //   // Step # | name | target | value
+  //   // 1 | open | http://localhost:8080 | 
+  //   driver.get("http://localhost:8080");
+  //   // 2 | runScript | document.cookie="1=false";document.cookie="2=false";document.cookie="3=false"; | 
+  //   js.executeScript("document.cookie=\"1=false\";document.cookie=\"2=false\";document.cookie=\"3=false\";");
+  //   // 3 | click | linkText=Rent-A-Cat | 
+  //   driver.findElement(By.linkText("Rent-A-Cat")).click();
+  //   // 4 | type | id=rentID | 1
+  //   driver.findElement(By.id("rentID")).sendKeys("1");
+  //   // 5 | click | xpath=//button[text()="Rent"] | 
+  //   driver.findElement(By.xpath("//button[text()=\"Rent\"]")).click();
+  //   // 6 | assertText | css=#listing li:nth-child(1) | Rented out
+  //   assertThat(driver.findElement(By.cssSelector("#listing li:nth-child(1)")).getText(), is("Rented out"));
+  // }
   // @Test
   // public void tEST7RETURN() {
   //   // Test name: TEST-7-RETURN

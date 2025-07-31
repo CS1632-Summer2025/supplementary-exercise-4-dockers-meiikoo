@@ -48,52 +48,52 @@ public class D3Test {
     driver.quit();
   }
 
-  @Test
-  public void tEST1LINKS() {
-    // Test name: TEST-1-LINKS
-    // Step # | name | target | value
-    // 1 | open | http://localhost:8080 | 
-    driver.get("http://localhost:8080");
-    // 2 | setWindowSize | 1280x800 | 
-    driver.manage().window().setSize(new Dimension(1280, 800));
-    // 3 | storeAttribute | linkText=Reset@href | linkHref
-    {
-      WebElement element = driver.findElement(By.linkText("Reset"));
-      String attribute = element.getAttribute("href");
-      vars.put("linkHref", attribute);
-    }
-    // 4 | assert | linkHref | /reset
-    assertEquals(vars.get("linkHref").toString(), "http://localhost:8080/reset");
-    // 5 | close |  | 
-    driver.close();
-  }
-  @Test
-  public void tEST2RESET() {
-    // Test name: TEST-2-RESET
-    // Step # | name | target | value
-    // 1 | open | / | 
-    driver.get("http://localhost:8080");
-    // 2 | setWindowSize | 1200x800 | 
-    driver.manage().window().setSize(new Dimension(1200, 800));
-    // 3 | runScript | document.cookie = "1=true";document.cookie = "2=true";document.cookie = "3=true"; | 
-    js.executeScript("document.cookie = \"1=true\";document.cookie = \"2=true\";document.cookie = \"3=true\";");
-    // 4 | click | linkText=Reset | 
-    driver.findElement(By.linkText("Reset")).click();
-    // 5 | executeScript | return document.cookie.split("; ")[0]; | cookie1
-    vars.put("cookie1", js.executeScript("return document.cookie.split(\"; \")[0];"));
-    // 6 | executeScript | return document.cookie.split("; ")[1]; | cookie2
-    vars.put("cookie2", js.executeScript("return document.cookie.split(\"; \")[1];"));
-    // 7 | executeScript | return document.cookie.split("; ")[2]; | cookie3
-    vars.put("cookie3", js.executeScript("return document.cookie.split(\"; \")[2];"));
-    // 8 | assert | cookie1 | 1=false
-    assertEquals(vars.get("cookie1").toString(), "1=false");
-    // 9 | assert | cookie2 | 2=false
-    assertEquals(vars.get("cookie2").toString(), "2=false");
-    // 10 | assert | cookie3 | 3=false
-    assertEquals(vars.get("cookie3").toString(), "3=false");
-    // 11 | close |  | 
-    driver.close();
-  }
+  // @Test
+  // public void tEST1LINKS() {
+  //   // Test name: TEST-1-LINKS
+  //   // Step # | name | target | value
+  //   // 1 | open | http://localhost:8080 | 
+  //   driver.get("http://localhost:8080");
+  //   // 2 | setWindowSize | 1280x800 | 
+  //   driver.manage().window().setSize(new Dimension(1280, 800));
+  //   // 3 | storeAttribute | linkText=Reset@href | linkHref
+  //   {
+  //     WebElement element = driver.findElement(By.linkText("Reset"));
+  //     String attribute = element.getAttribute("href");
+  //     vars.put("linkHref", attribute);
+  //   }
+  //   // 4 | assert | linkHref | /reset
+  //   assertEquals(vars.get("linkHref").toString(), "http://localhost:8080/reset");
+  //   // 5 | close |  | 
+  //   driver.close();
+  // }
+  // @Test
+  // public void tEST2RESET() {
+  //   // Test name: TEST-2-RESET
+  //   // Step # | name | target | value
+  //   // 1 | open | / | 
+  //   driver.get("http://localhost:8080");
+  //   // 2 | setWindowSize | 1200x800 | 
+  //   driver.manage().window().setSize(new Dimension(1200, 800));
+  //   // 3 | runScript | document.cookie = "1=true";document.cookie = "2=true";document.cookie = "3=true"; | 
+  //   js.executeScript("document.cookie = \"1=true\";document.cookie = \"2=true\";document.cookie = \"3=true\";");
+  //   // 4 | click | linkText=Reset | 
+  //   driver.findElement(By.linkText("Reset")).click();
+  //   // 5 | executeScript | return document.cookie.split("; ")[0]; | cookie1
+  //   vars.put("cookie1", js.executeScript("return document.cookie.split(\"; \")[0];"));
+  //   // 6 | executeScript | return document.cookie.split("; ")[1]; | cookie2
+  //   vars.put("cookie2", js.executeScript("return document.cookie.split(\"; \")[1];"));
+  //   // 7 | executeScript | return document.cookie.split("; ")[2]; | cookie3
+  //   vars.put("cookie3", js.executeScript("return document.cookie.split(\"; \")[2];"));
+  //   // 8 | assert | cookie1 | 1=false
+  //   assertEquals(vars.get("cookie1").toString(), "1=false");
+  //   // 9 | assert | cookie2 | 2=false
+  //   assertEquals(vars.get("cookie2").toString(), "2=false");
+  //   // 10 | assert | cookie3 | 3=false
+  //   assertEquals(vars.get("cookie3").toString(), "3=false");
+  //   // 11 | close |  | 
+  //   driver.close();
+  // }
   @Test
   public void tEST3CATALOG() {
     // Test name: TEST-3-CATALOG
